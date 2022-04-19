@@ -15,6 +15,7 @@ class WorldMap:
         self.chunksize = 10
 
         self.chunk_label = f"{self.p.CHUNK[0]}, {self.p.CHUNK[1]}, {self.p.CHUNK[2]}"
+        self.menu = ["WASD - Move", "Spacebar - Break", "E - Dig/Use Stairs"]
         
         self.collision = False
         self.space = False #DEBUG: Flag for the spacebar.
@@ -82,21 +83,21 @@ class WorldMap:
                      self.wall["Crumbling Kimberlite"]: self.item["Diamond"],}
 
         self.chunkmap = ["^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-                    "^≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈#    ╔════════════   ^",
-                    "^≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈####    ║  ^^^^^^^^^^^^^^",
-                    "^≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈P#^^^^^  ╚═══════════╗   ^",
-                    "^≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈##^###RR^^^M              ║   ^",
-                    "^≈≈≈≈≈############## ^^^^RR^^^^^^^^^^^^^^^^^^W^^^^",
-                    "^######      ♠║♠♠♠♠♠♠^^^^^║^^                ║   ^",
-                    "^       ╔═════╩═F══╗♠^    ║      ♠♠♠         ║   ^",
-                    "^ Y╗    ║   ♠♠♠♠♠♠♠║♠^    ╚══╦════╦══════════╝   ^",
-                    "^  ╠════╣    ♠♠♠♠♠♠║♠^  ╔════╝  ♠♠║♠♠            ^",
-                    "^  ║    ║      ╔═══╩════╝       ♠♠║♠♠            ^",
-                    "^ *║*   V      ║      ^^^^^^^^  ♠♠║♠♠            ^",
-                    "^**║**  ║      ║    ^^╔═══════════F══════D       ^",
-                    "^**G*** ╚══════Z══════╝^^^^^^^ ♠♠♠♠♠♠♠           ^",
-                    "^*******             ^^       ♠♠♠♠♠♠♠♠♠          ^",
-                    "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"]
+                         "^≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈#    ╔════════════   ^",
+                         "^≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈####    ║  ^^^^^^^^^^^^^^",
+                         "^≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈P#^^^^^  ╚═══════════╗   ^",
+                         "^≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈##^###RR^^^M              ║   ^",
+                         "^≈≈≈≈≈############## ^^^^RR^^^^^^^^^^^^^^^^^^W^^^^",
+                         "^######      ♠║♠♠♠♠♠♠^^^^^║^^                ║   ^",
+                         "^       ╔═════╩═F══╗♠^    ║      ♠♠♠         ║   ^",
+                         "^ Y╗    ║   ♠♠♠♠♠♠♠║♠^    ╚══╦════╦══════════╝   ^",
+                         "^  ╠════╣    ♠♠♠♠♠♠║♠^  ╔════╝  ♠♠║♠♠            ^",
+                         "^  ║    ║      ╔═══╩════╝       ♠♠║♠♠            ^",
+                         "^ *║*   V      ║      ^^^^^^^^  ♠♠║♠♠            ^",
+                         "^**║**  ║      ║    ^^╔═══════════F══════D       ^",
+                         "^**G*** ╚══════Z══════╝^^^^^^^ ♠♠♠♠♠♠♠           ^",
+                         "^*******             ^^       ♠♠♠♠♠♠♠♠♠          ^",
+                         "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"]
 
         ##              MAP KEY
         ##              ^ Mountain
@@ -293,7 +294,7 @@ class WorldMap:
     def updateMenu(self): # Updates the menu on the side.
         cursor = 1
         #TODO: Put the strips of the chunkmap on the menu.
-        menu = ["WASD - Move", "Spacebar - Break", "E - Dig/Use Stairs"]
+        self.menu = ["WASD - Move", "Spacebar - Break", "Q - does nothing yet :/", "E - Dig/Use Stairs"]
 
     def resetCharacter(self): #Places the character.
         self.region["cen"][self.p.COORDS[1]][self.p.COORDS[0]] += self.character
@@ -347,7 +348,7 @@ class WorldMap:
                     if x[-1] != " ": output += x[-1]
                     else: output += x[-2]
                 try:
-                    output += f"     {menu[y]}\n"
+                    output += f"     {self.menu[y]}\n"
                 except Exception:
                     output += "\n"
             for y in range(self.chunksize):
@@ -361,7 +362,7 @@ class WorldMap:
                     if x[-1] != " ": output += x[-1]
                     else: output += x[-2]
                 try:
-                    output += f"     {menu[y+self.chunksize]}\n"
+                    output += f"     {self.menu[y+self.chunksize]}\n"
                 except Exception:
                     output += "\n"
             for y in range(self.chunksize):
@@ -375,7 +376,7 @@ class WorldMap:
                     if x[-1] != " ": output += x[-1]
                     else: output += x[-2]
                 try:
-                    output += f"     {menu[y+self.chunksize*2]}\n"
+                    output += f"     {self.menu[y+self.chunksize*2]}\n"
                 except Exception:
                     output += "\n"
             return output

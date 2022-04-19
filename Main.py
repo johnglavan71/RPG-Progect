@@ -3,6 +3,7 @@ from Player import Player
 from worldMap import WorldMap
 from os import system
 from time import sleep
+from Menu import Menu
 
 # [ kbhit, getch ]
 Hit = msvcrt.kbhit
@@ -25,10 +26,10 @@ def GameLoop():
     #if False: #if not save found
     name = input("What is your name?\n: ")
     classchoice = input('Please choose your class.\n\
-                        Mage : Uses magic to slay your foes in mysterious ways.\n\
-                        Barbarian : All you know is how to fight.\n\
-                        Knight : You MUST protect the others.\n\
-                        Rogue : Stealth and steal is what your best at.\n: ')
+  Mage : Uses magic to slay your foes in mysterious ways.\n\
+  Barbarian : All you know is how to fight.\n\
+  Knight : You MUST protect the others.\n\
+  Rogue : Stealth and steal is what your best at.\n: ')
     p = Player(name, classchoice)
     room = WorldMap(p)
     oldOutput = ""
