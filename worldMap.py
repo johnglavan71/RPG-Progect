@@ -254,8 +254,9 @@ class WorldMap:
         else:
             if self.space: self.breakTile(destinationChunk, destinationX, destinationY)
             
-    def testcollision(self): # Looks for anything preventing the player from moving
+    def testcollision(self, controls:list): # Looks for anything preventing the player from moving
         playerHasBoat = False #DEBUG: Remove this variable once boats are added!
+        up, down, left, right = controls[0], controls[1], controls[2], controls[3], 
         dy = down - up
         dx = right - left
         if 0 <= self.p.COORDS[1]+dy <= self.chunksize-1 and 0 <= self.p.COORDS[0]+dx <= self.chunksize-1:
@@ -293,6 +294,9 @@ class WorldMap:
         cursor = 1
         #TODO: Put the strips of the chunkmap on the menu.
         menu = ["WASD - Move", "Spacebar - Break", "E - Dig/Use Stairs"]
+
+    def resetCharacter(self): #Places the character.
+        self.region["cen"][self.p.COORDS[1]][self.p.COORDS[0]] += self.character
 
     def use(self): # The Use Function(TM)
         if self.region["cen"][self.p.COORDS[1]][self.p.COORDS[0]][0] == self.tile["Down Stair"]:

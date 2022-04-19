@@ -32,6 +32,9 @@ def GameLoop():
     p = Player(name, classchoice)
     room = WorldMap(p)
     oldOutput = ""
+    room.loadregion()
+    room.updateMenu()
+    room.resetCharacter()
     #else: pass #save found
     
     # Start Loop
@@ -50,10 +53,8 @@ def GameLoop():
             if key == ' ': dig = True
 
         if type(room) is WorldMap:
-            room.loadregion()
-            room.updateMenu()
             if up or down or left or right:
-                room.testcollision()
+                room.testcollision([up, down, left, right])
             if use:
                 room.use()
             output = room.getOutput()
