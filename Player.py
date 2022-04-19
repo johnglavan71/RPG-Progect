@@ -1,12 +1,19 @@
-class player:
-    def __init__(self, CLASS, HP=5, DEF=0, STR=20, DEX=1, GOLD=5):
+class Player:
+    def __init__(self, NAME, CLASS, HP=5, DEF=0, STR=20, DEX=1, GOLD=5):
+        self.NAME = NAME
         self.CLASS = CLASS
         self.HP = HP
         self.DEF = DEF
         self.STR = STR
-        self.ATK = self.STR // 4
         self.DEX = DEX
         self.GOLD = GOLD
+        
+        self.classData(str.lower(CLASS))
+        self.ATK = self.STR // 4
+
+        self.CHUNK = [8,10,0]
+        self.COORDS = [5,5] #coordinates within chunk
+        
         self.ELEM_RESIS = {}
         self.INV = []
         self.CARRY = 0
@@ -73,6 +80,20 @@ class player:
         print(f'You have equipped {list(item.keys())[0]} to {rpSlot}')
         self.INV.pop(itemindex)
         return
+
+    def classData(self, classname):
+        cd = {
+            "mage": {"HP": 5, "DEF": 5, "STR": 20, "DEX": 1, "GOLD": 5},
+            "barbarian": {"HP": 5, "DEF": 5, "STR": 20, "DEX": 1, "GOLD": 5},
+            "knight": {"HP": 5, "DEF": 5, "STR": 20, "DEX": 1, "GOLD": 5},
+            "rogue": {"HP": 5, "DEF": 5, "STR": 20, "DEX": 1, "GOLD": 5},
+            "admin": {"HP": 2147483647, "DEF": 2147483647, "STR": 2147483647, "DEX": 2147483647, "GOLD": 2147483647}
+            }
+        self.HP = cd[classname]["HP"]
+        self.DEF = cd[classname]["DEF"]
+        self.STR = cd[classname]["STR"]
+        self.DEX = cd[classname]["DEX"]
+        self.GOLD = cd[classname]["GOLD"]
 
 
 

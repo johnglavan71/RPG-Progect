@@ -1,5 +1,5 @@
 
-class menu:
+class Menu:
     def __init__(self, menuList:list):
         self.menuList = menuList
         self.cursor = 0

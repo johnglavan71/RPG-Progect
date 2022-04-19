@@ -1,0 +1,71 @@
+Variables inside of items
+    health
+    Atk
+    str
+    dex
+    def
+    val
+    elemental stats
+        fire
+        lightning
+        poison
+        holy
+        dark
+    stat boosters
+    0 min max qty
+    weighty
+
+Item types
+    Def
+        Helmet
+        Chestplate
+        Gloves/Gauntlets
+        Pants
+        Boots
+        Bracers
+        Pauldron(Shoulders)
+        Shields
+    Atk
+        Swords
+        Daggers
+        Bows
+        Staff
+        Wand
+        Axe
+        Mace
+    Acc
+        Necklace
+        Ring
+        Bracelet
+        Circlet
+        Pocket Watch
+    Consumables
+        Single use tools
+        Potions
+    Resources
+        Ores/Bars
+            Iron
+            Copper
+            Tin
+            Zinc
+            Silver
+            Gold
+            Coal
+        Gems
+        Mushrooms
+        Herbs (Moss, Vines, Flowers, ......)
+        Leather
+        Meat
+        Cloth
+        Wood
+
+Game mechs
+    Hidden dex bar, dex gets added each tick until it reaches a certain threshold, attack activates when threshold is reached
+    Manual and auto saves
+    Area-specific music and sound effects (how to WAV?)
+    Menu function that turns lists into navigatable and selectable menus.
+
+Controls
+    WASD - Movement/Navigation
+    Q - Inventory Toggle
+    E - Select
